@@ -2,30 +2,47 @@
 
 Live demo of [@tenderlift/simap-client](https://www.npmjs.com/package/@tenderlift/simap-client) with real API data.
 
-## 🚀 Quick Start
+## 🚀 Quick Start with GitHub Codespaces
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=TenderLift/simap-client-demo)
 
-1. Click the button above to open in GitHub Codespaces
-2. Wait for the environment to build (1-2 minutes)
-3. The demo will automatically open in your browser
-4. If not, check the PORTS tab and click the globe icon for port 3000
+### Steps:
+1. **Click the button above** to open in GitHub Codespaces
+2. **Wait for setup** (~1 minute) - the terminal will show "🚀 SIMAP Demo server running"
+3. **Open the demo**:
+   - Look for the **PORTS** tab at the bottom of the screen
+   - Find port **3000** in the list
+   - Click the **globe icon** 🌐 (or right-click → "Open in Browser")
+   - A new tab opens with the live demo!
+
+### 📍 Where to find the PORTS tab:
+- Bottom panel of VS Code in Codespaces
+- Next to TERMINAL, PROBLEMS, OUTPUT tabs
+- Shows "3000" with a green dot when ready
+
+## 📚 What You'll See
+
+The demo shows:
+- **Swiss Cantons** - All 26 cantons with their NUTS3 codes
+- **Recent Projects** - Latest procurement projects from SIMAP
+- **Refresh buttons** - Get fresh data anytime
+- **Live API calls** - Real data, no mocks!
 
 ## 🛠️ Local Development
 
+If running locally:
 ```bash
 npm install
 npm start
+# Open http://localhost:3000
 ```
 
-Then open http://localhost:3000
+## 💡 How It Works
 
-## 📚 What This Demo Shows
-
-- Real-time data from SIMAP API
-- How to use @tenderlift/simap-client in Node.js
-- Simple API proxy to avoid CORS issues
-- Clean UI to visualize the data
+This demo uses a Node.js server to:
+1. Call the SIMAP API directly (no CORS issues)
+2. Serve the data to a web interface
+3. Show real procurement data from Switzerland
 
 ## 📦 Documentation
 

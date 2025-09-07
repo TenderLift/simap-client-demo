@@ -115,4 +115,7 @@ serve({
   port: 3000
 });
 
-console.log('🚀 SIMAP Demo server running on http://localhost:3000');
+console.log('🚀 SIMAP Demo server running on port 3000');
+console.log('');
+console.log('📍 In Codespaces: Check the PORTS tab below and click the globe icon for port 3000');
+console.log('💻 Local: Open http://localhost:3000');
