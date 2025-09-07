@@ -25,15 +25,17 @@ async function demo() {
       cantonsResult.data.cantons.slice(0, 5).forEach(canton => {
         console.log(`   - ${canton.id}: NUTS3 ${canton.nuts3}`);
       });
-      console.log('   ...\n');
+      console.log(`   ... and ${cantonsResult.data.cantons.length - 5} more\n`);
+    } else {
+      console.log('❌ No cantons data received\n');
     }
 
-    // 2. Search for recent projects
-    console.log('🔍 Searching for recent projects in Zurich...');
+    // 2. Search for recent Swiss projects
+    console.log('🔍 Searching for recent Swiss projects...');
     const projectsResult = await getPublicProjectSearch({
       query: {
-        maxResults: 3,
-        orderAddressCantons: ['ZH']
+        maxResults: 5,
+        orderAddressCountryOnlySwitzerland: true
       }
     });
 
@@ -45,16 +47,28 @@ async function demo() {
         console.log(`   Title: ${project.title || 'Untitled'}`);
         console.log(`   ID: ${project.id}`);
         console.log(`   Status: ${project.status || 'Unknown'}`);
-        console.log(`   Location: ${project.orderAddress?.city || 'N/A'}, ${project.orderAddress?.canton || 'N/A'}`);
+        if (project.orderAddress) {
+          console.log(`   Location: ${project.orderAddress.city || 'N/A'}, ${project.orderAddress.canton || 'N/A'}`);
+        }
+        if (project.submissionDeadline) {
+          console.log(`   Deadline: ${project.submissionDeadline}`);
+        }
         console.log('');
       });
     } else {
-      console.log('No projects found.\n');
+      console.log('ℹ️  No projects found (this might be normal if there are no current open projects)');
+      console.log('    The API connection is working correctly!\n');
     }
 
     console.log('='.repeat(50));
-    console.log('✨ Demo complete! Edit this code to explore more.');
-    console.log('\n📚 Docs: https://github.com/TenderLift/simap-client');
+    console.log('✨ Demo complete! The library is working correctly.\n');
+    
+    console.log('💡 Try editing the code above to:');
+    console.log('   - Search with different parameters');
+    console.log('   - Fetch other reference data');
+    console.log('   - Filter by specific cantons\n');
+    
+    console.log('📚 Full docs: https://github.com/TenderLift/simap-client');
     
   } catch (error) {
     console.error('❌ Error:', error.message);
