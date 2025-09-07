@@ -1,12 +1,18 @@
 import { client, getPublicProjectSearch, listCantons } from '@tenderlift/simap-client';
 
-// Configure the client
-client.setConfig({
-  baseUrl: 'https://www.simap.ch/api'
-});
-
 console.log('🚀 SIMAP Client Demo\n' + '='.repeat(50));
 console.log('Welcome! This demo shows how to use @tenderlift/simap-client\n');
+
+// Use CORS proxy for browser environment
+const CORS_PROXY = 'https://corsproxy.io/?';
+const SIMAP_API = 'https://www.simap.ch/api';
+
+// Configure the client with CORS proxy
+client.setConfig({
+  baseUrl: CORS_PROXY + encodeURIComponent(SIMAP_API)
+});
+
+console.log('ℹ️  Using CORS proxy to access SIMAP API from browser environment\n');
 
 async function demo() {
   try {
@@ -16,8 +22,8 @@ async function demo() {
     
     if (cantonsResult.data?.cantons) {
       console.log(`✅ Found ${cantonsResult.data.cantons.length} cantons:`);
-      cantonsResult.data.cantons.slice(0, 3).forEach(canton => {
-        console.log(`   - ${canton.id}`);
+      cantonsResult.data.cantons.slice(0, 5).forEach(canton => {
+        console.log(`   - ${canton.id}: NUTS3 ${canton.nuts3}`);
       });
       console.log('   ...\n');
     }
@@ -39,6 +45,7 @@ async function demo() {
         console.log(`   Title: ${project.title || 'Untitled'}`);
         console.log(`   ID: ${project.id}`);
         console.log(`   Status: ${project.status || 'Unknown'}`);
+        console.log(`   Location: ${project.orderAddress?.city || 'N/A'}, ${project.orderAddress?.canton || 'N/A'}`);
         console.log('');
       });
     } else {
@@ -51,8 +58,10 @@ async function demo() {
     
   } catch (error) {
     console.error('❌ Error:', error.message);
-    console.log('\nNote: SIMAP API might have CORS restrictions.');
-    console.log('This demo works best in Node.js environments.');
+    console.log('\nTroubleshooting:');
+    console.log('- The CORS proxy might be down or rate-limited');
+    console.log('- Try again in a few moments');
+    console.log('- For production use, run this in Node.js without a proxy');
   }
 }
 
