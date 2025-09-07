@@ -1,0 +1,16 @@
+{
+  "name": "SIMAP Client Demo",
+  "features": { 
+    "ghcr.io/devcontainers/features/node:1": { 
+      "version": "20" 
+    } 
+  },
+  "postCreateCommand": "npm install && npm start",
+  "forwardPorts": [3000],
+  "portsAttributes": { 
+    "3000": { 
+      "label": "SIMAP Demo", 
+      "onAutoForward": "openBrowser" 
+    } 
+  }
+}

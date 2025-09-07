@@ -1,18 +1,15 @@
 # SIMAP Client Demo
 
-Interactive demo of [@tenderlift/simap-client](https://www.npmjs.com/package/@tenderlift/simap-client)
+Live demo of [@tenderlift/simap-client](https://www.npmjs.com/package/@tenderlift/simap-client) with real API data.
 
 ## 🚀 Quick Start
 
-Click the button below to try it in your browser:
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=TenderLift/simap-client-demo)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/TenderLift/simap-client-demo)
-
-## 📝 What This Demo Does
-
-1. Fetches list of Swiss cantons
-2. Searches for recent procurement projects in Zurich
-3. Displays project details
+1. Click the button above to open in GitHub Codespaces
+2. Wait for the environment to build (1-2 minutes)
+3. The demo will automatically open in your browser
+4. If not, check the PORTS tab and click the globe icon for port 3000
 
 ## 🛠️ Local Development
 
@@ -21,7 +18,16 @@ npm install
 npm start
 ```
 
-## 📚 Documentation
+Then open http://localhost:3000
+
+## 📚 What This Demo Shows
+
+- Real-time data from SIMAP API
+- How to use @tenderlift/simap-client in Node.js
+- Simple API proxy to avoid CORS issues
+- Clean UI to visualize the data
+
+## 📦 Documentation
 
 - [NPM Package](https://www.npmjs.com/package/@tenderlift/simap-client)
 - [GitHub Repository](https://github.com/TenderLift/simap-client)
